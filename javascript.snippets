@@ -228,6 +228,42 @@ snippet obterData
 	  // console.log(dataHoraFormatada);
 	  return dataHoraFormatada;
 	}
+snippet obterDataReg
+	// Obtenha a data 
+	function obterDataReg() {
+  // Obter a data e hora atual do dispositivo
+  const dataHoraAtual = new Date();
+  
+  // Formatar a data e hora para o formato correto
+  const ano = dataHoraAtual.getFullYear();
+  const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
+  const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
+  const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
+  const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
+  const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
+  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
+  const dataHoraFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}:${milisegundos}`;
+  const dataReg = `${1:ano}-${2:mes}-${3:dia}`;
+  return dataReg;
+	}
+snippet obterHoraReg
+	// Obtenha a hora
+	function obterHora() {
+  // Obter a hora atual do dispositivo
+  const dataHoraAtual = new Date();
+  
+  // Formatar a data e hora para o formato correto
+  const ano = dataHoraAtual.getFullYear();
+  const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
+  const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
+  const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
+  const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
+  const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
+  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
+  const dataHoraFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}:${milisegundos}`;
+  const horaReg = `${1:horas}:${2:minutos}:${3:segundos}:${4:milisegundos}`;
+  return horaReg;
+ }
 snippet criarLocalStorage
 	//const getPagamento = JSON.parse(localStorage.getItem("pagamentos"));
 	//let pagamentos = getPagamento !== null ? getPagamento : [];
