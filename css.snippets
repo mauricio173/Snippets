@@ -1037,3 +1037,138 @@ snippet glow
 	0 0 80px #4dff7a;*/
 	}
 	}
+	
+snippet class
+	.${1:classSelector} {
+		
+	}
+	
+snippet id
+	#${1:idSelector} {
+	
+	}
+	
+snippet mediaMob
+	@media screen and (max-width: 800px) {
+		.classe {
+			
+		}
+		#id {
+			
+		}
+	}
+	
+snippet cw
+	flex-flow: column wrap;
+snippet rw
+	flex-flow: row wrap;
+	
+snippet jus:bet
+	justify-content: space-between;
+snippet jus:around
+	justify-content: space-around;
+snippet jus:evenly
+	justify-content: space-evenly;
+snippet jus:center
+	justify-content: center;
+snippet jus:end
+	justify-content: flex-end;
+snippet jus:start
+	justify-content: flex-start;
+	
+snippet ali:bet
+	align-items: space-between;
+snippet ali:around
+	align-items: space-around;
+snippet ali:center
+	align-items: center;
+snippet ali:end
+	align-items: flex-end;
+snippet ali:start
+	align-items: flex-start;
+	
+snippet cont:bet
+	align-content: space-between;
+snippet cont:around
+	align-content: space-around;
+snippet cont:center
+	align-content: center;
+snippet cont:start
+	align-content: flex-start;
+snippet cont:end
+	align-content: flex-end;
+	
+snippet padrao
+	html {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		--dark: #181818dd;
+		--white: #fdfdfd;
+		--red: #f9004d;
+		--roxo: #986dff;
+		--verde: #a6fc98;
+	}
+	
+	body {
+	
+	}
+	
+	.header {
+	
+	}
+	
+	.main {
+	
+	}
+	
+	.footer {
+	
+	}
+	
+snippet padmar
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	
+snippet sumirEfeito
+	/* Oculta a seta original do elemento */
+	details > summary {
+	 list-style: none;
+	}
+	summary::-webkit-details-marker {
+	 display: none;
+	}
+	summary::after {
+	 position: relative;
+	 top: -1px;
+	 content: " ▶";
+	 animation: blink-animation 0.2s steps(5, start) infinite;
+	 -webkit-animation: blink-animation 1s steps(5, start) infinite;
+	}
+	
+	/* modifica a seta pra baixo quando clicar */
+	details[open] summary:after {
+	 content: " ▼";
+	 animation: blink-animation 1s steps(5, start) infinite;
+	 -webkit-animation: blink-animation 1s steps(5, start) infinite;
+	}
+	
+	/* Animação */
+	@keyframes blink-animation {
+	 to {
+	  visibility: hidden;
+	 }
+	}
+	
+	@-webkit-keyframes blink-animation {
+	 to {
+	  visibility: hidden;
+	 }
+	}
+	
+snippet flexBox
+	display: flex;
+	align-items: center;
+	flex-flow: row wrap;
+	justify-content: space-around;
