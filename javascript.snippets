@@ -287,3 +287,67 @@ snippet eruda
       onload="eruda.init()" 
   ></script>
 
+snippet criarMostrarCategorias
+	function addCategoria() {
+	  var newCategoryAdd = document.querySelector(".popInput").value.trim();
+	  var newCategoryAdds = document.querySelector(".popInput");
+	  var newCategoryIcon = '<img src="./imgs/new-category.svg" alt=""></img>';
+	  var categoryIcon = '<img src="./imgs/new-category.svg" alt=""></img>';
+	  
+	  if (newCategoryAdd == null || newCategoryAdd == '') {
+	  	alert("Nenhum nome digitado.")
+	  	return
+	  }
+	  
+	  categorias.push({category: newCategoryAdd});
+	  localStorage.setItem("categorias", JSON.stringify(categorias));
+	  transactions.forEach((transaction) => {
+	    if (transaction.category === newCategoryAdd) {
+	      transaction.categoryIcon = newCategoryIcon;
+	    }
+	   
+	  });
+	  newCategoryAdds.value = "";
+	
+	  // Adicionar nova opção ao select
+	  const selectElement = document.getElementById("categorias");
+	  const newOption = document.createElement("option");
+	  newOption.value = newCategoryAdd;
+	  newOption.textContent = newCategoryAdd;
+	  selectElement.appendChild(newOption);
+	  
+	  boxPopInput.style="display:none;"
+		}
+
+	
+	function openCategorias() {
+	  const selectElements = document.getElementById("categorias");
+	  selectElements.innerHTML = `	<option value="" disabled selected required>Categorias</option>`;
+	  categorias.forEach((categorys) => {
+	  const newOption = document.createElement("option");
+	  newOption.value = categorys.category;
+	  newOption.textContent = categorys.category;
+	  selectElements.appendChild(newOption);
+	  });
+	  //console.log(categorias);
+	}
+	openCategorias();
+	
+	<label>Categorias</label>
+					<div id="categoriaNova">
+					  
+					<select name="category" id="categorias" onclick="openCategorias()">
+						<option value="" disabled selected required>Categorias</option>
+						<option value="Comida">Comida</option>
+						<option value="Trabalho">Trabalho</option>
+						<option value="Fitness">Fitness</option>
+						<option value="Transporte">Transporte</option>
+					</select>
+				<!--	<button class="addCategoria"
+					onclick="addCategoriass()">add</button>
+				-->
+				  <button class="addCategoria"
+					onclick="openAddCategorias()">
+				    Nova
+				  </button>
+					</div>
