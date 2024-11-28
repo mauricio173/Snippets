@@ -351,3 +351,109 @@ snippet criarMostrarCategorias
 				    Nova
 				  </button>
 					</div>
+					
+snippet Id
+	const ${1:idSelector} = document.querySelector("#${2:$1}");
+snippet IdStyle
+	const ${1:idSelector} = document.querySelector("#${2:$1}");
+	const style${3:$1} = ${4:$1}.currentStyle || window.getComputedStyle(${5:$1});
+snippet gerarID
+	const gerarID = () => Math.round(Math.random() * 1000000);
+snippet consLog
+	console.log(${1:alerta});
+snippet eruda
+	<script src="https://cdn.jsdelivr.net/npm/eruda" onload="eruda.init()">
+	</script>
+snippet padraojs
+	const classSelector = document.querySelector(".classSelector");
+	const idSelector = document.querySelector("#idSelector");
+	
+	function functionName() {
+	
+	}
+	functionName();
+	
+	function functionNamed() {
+	
+	}
+	functionNamed();
+	
+	classSelector.addEventListener("click", functionName);
+	idSelector.addEventListener("click", functionNamed);
+snippet forEach
+	forEach((item, index) => {
+		
+	});
+snippet difData
+	function difDatas() {
+		const input_data_inicio = document.querySelector("#input_data_inicio").value;
+		const input_data_fim = document.querySelector("#input_data_fim").value;
+		const diffInMs = new Date(input_data_fim) - new Date(input_data_inicio);
+		const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+		console.log(diffInDays);
+		}
+		
+	 /*	<p class="js-data"></p> */
+		function setarData() {
+		let elementoData = document.querySelector(".js-data");
+		
+		let data = new Date();
+		
+		const objData = {
+		year: "numeric",
+		month: "long",
+		weekday: "long",
+		day: "numeric"
+		};
+		
+		elementoData.textContent = data.toLocaleTimeString("pt-BR", objData);
+		}
+		setarData();
+		setInterval(() => {
+		setarData();
+		}, 1000);
+snippet datasDif
+	let fim = "2024-04-01";
+	let inicio = "2024-04-01";
+	const diffEmMs = new Date(fim) - new Date(inicio);
+	const diffEmDays = diffEmMs / (1000 * 60 * 60 * 24);
+	return diffEmDays;
+snippet formatoDataBr
+	split("-").reverse().join("/")
+	function formatarDataPtBr(data) {
+		const partes = data.split("-").reverse();
+		partes[2] = partes[2].slice(2); // Remove os dois primeiros dígitos do ano
+		return partes.join("/");
+	}
+snippet tamFilhos
+	children.length
+snippet tamFilhosFechar
+	const ${1:classSelector} = document.querySelector(".${2:$1}");
+	if (${3:$1}.children.length === 1) {
+	while (${4:$1}.firstChild) {
+	${5:$1}.removeChild(${6:$1}.firstChild);
+		}
+	} 
+snippet innerHTML
+	innerHTML = `
+
+	`;
+snippet click
+	click();
+snippet toFixed
+	.toFixed(2)
+snippet DOMContentLoaded
+	  document.addEventListener("DOMContentLoaded", () => {
+	  	
+	  });
+snippet eventClick
+	addEventListener("${1:click}", ${2} () => {
+		
+	});
+snippet eventChange
+	document.addEventListener("change", () => {
+	  
+	 });
+snippet styleBody
+  const body = document.body;
+  const styleBody = body.currentStyle || window.getComputedStyle(body);
