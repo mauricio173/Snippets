@@ -1100,3 +1100,220 @@ snippet bootstrapModal
 	</div>
 	<!-- Script BootsTrap -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+snippet js
+	<script>
+		const classSelector = document.querySelector(".classSelector");
+		const idSelector = document.querySelector("#idSelector");
+		
+		function functionName() {
+		
+		}
+		functionName();
+		
+		function functionNamed() {
+		
+		}
+		functionNamed();
+		
+		classSelector.addEventListener("click", functionName);
+		idSelector.addEventListener("click", functionNamed);
+	</script>
+snippet menuHamburguer
+	<!DOCTYPE html>
+	<html>
+	<head>
+	    <title>Menu Hambúrguer</title>
+	    <link rel="stylesheet" href="style.css">
+	    <style type="text/css" media="all">
+	      body {
+	    background: #f2f2f2;
+	    font-family: 'Poppins', sans-serif;
+	}
+	
+	nav {
+	    height: 65px;
+	    width: 100%;
+	    background: #fff;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    z-index: 1;
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    padding: 0 10px;
+	    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	}
+	
+	nav .menu-list {
+	    display: flex;
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+	}
+	
+	nav .menu-list li {
+	    margin: 0 10px;
+	}
+	
+	nav .menu-list li a {
+	    text-decoration: none;
+	    color: #333;
+	    font-weight: 500;
+	    font-size: 16px;
+	    transition: all 0.3s ease;
+	}
+	
+	nav .menu-list li a:hover {
+	    color: #007bff;
+	}
+	
+	#check {
+	    display: none;
+	}
+	
+	.checkbtn {
+	    font-size: 30px;
+	    color: #333;
+	    cursor: pointer;
+	    display: none;
+	}
+	
+	@media (max-width: 768px) {
+	    nav .menu-list {
+	        position: absolute;
+	        top: 65px;
+	        left: 0;
+	        width: 100%;
+	        background: #fff;
+	        flex-direction: column;
+	        align-items: center;
+	        justify-content: center;
+	        text-align: center;
+	        transition: all 0.3s ease;
+	        height: 0;
+	        overflow: hidden;
+	    }
+	
+	    nav .menu-list li {
+	        margin: 10px 0;
+	    }
+	
+	    nav .menu-list li a {
+	        font-size: 20px;
+	    }
+	
+	    #check:checked ~ .menu-list {
+	        height: calc(100vh - 65px);
+	    }
+	
+	    .checkbtn {
+	        display: block;
+	    }
+	}
+	
+	    </style>
+	</head>
+	<body>
+	    <nav>
+	        <input type="checkbox" id="check">
+	        <label for="check" class="checkbtn">
+	            <i class="fas fa-bars">r</i>
+	        </label>
+	        <ul class="menu-list">
+	            <li><a href="#">Home</a></li>
+	            <li><a href="#">Sobre</a></li>
+	            <li><a href="#">Serviços</a></li>
+	            <li><a href="#">Contato</a></li>
+	        </ul>
+	    </nav>
+	</body>
+	</html>
+snippet inp:range
+	<input type="range" name="" id="${1:inputRange}" value="${2:0}" min="0" max="10000" step="0.001 / any"/>
+snippet scri
+	<script>
+		const classSelector = document.querySelector(".classSelector");
+		const idSelector = document.querySelector("#idSelector");
+		function functionName() {
+		console.log("classSelector: " + classSelector);
+		}
+		functionName();
+		function functionNamed() {
+		console.log("idSelector: " + idSelector);
+		}
+		functionNamed();
+		
+		classSelector.addEventListener("onload", functionName);
+		idSelector.addEventListener("onload", functionNamed);
+	</script>
+snippet scriptsrc
+	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>
+snippet newscript
+	<script type="application/javascript" charset="utf-8">
+		${1}
+	</script>
+snippet newscriptsrc
+	<script src="${1}.js" type="application/javascript" charset="utf-8"></script>
+snippet menu
+  <ul>
+		<li><a href="${1:#}">LINK</a></li>
+	</ul>
+snippet menuResponse
+	<ul>
+		<li>
+		  <a>MENU</a>
+		  <ul>
+			  <li><a>ITEM 1</a></li>
+			  <li><a>ITEM 2</a></li>
+			  <li><a>ITEM 3</a></li>
+		  </ul>
+		</li>
+	</ul>
+snippet myhtml5
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+			<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+			<link rel="stylesheet" href="styles.css" type="text/css"/>
+			<script src="script.js" type="text/javascript" charset="utf-8" defer></script>
+			<title>${1}</title>
+			
+		</head>
+		<body>
+		
+		<header class="header">
+		
+		</header>
+		
+		<main class="main">
+		
+			<section class="">
+			
+			</section>
+			
+			<section class="">
+			
+			</section>
+			
+			<section class="">
+			
+			</section>
+		
+		</main>
+		
+		<footer class="footer">
+		
+		</footer>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+			crossorigin="anonymous"></script>
+			<script
+			src="https://cdn.jsdelivr.net/npm/eruda"
+			onload="eruda.init()"></script>
+		</body>
+	</html>
