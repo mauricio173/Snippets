@@ -509,11 +509,11 @@ snippet styleBody
   const styleBody = body.currentStyle || window.getComputedStyle(body);
 trigger \(?click\(
 endTrigger \)?
-snippet semana
-  function fun() {
-	  console.log(dats.value);
+snippet semanas
+  const inputDataNumSemana = document.querySelector("#inputDataNumSemana");
+  function semana() {
 	  moment.locale("pt-BR");
-	  t = moment(`${dats.value}`);
-	  console.log(`${t.week()} de ${t.weekYear()}`); 
-	  console.log(`${t.isoWeek()} de ${t.isoWeekYear()}`);
+	  t = moment(`${5:inputDataNumSemana.value}`);
+	  console.log(`${1:t.week()} de ${2:t.weekYear()}`); 
+	  console.log(`${3:t.isoWeek()} de ${4:t.isoWeekYear()}`);
   }
