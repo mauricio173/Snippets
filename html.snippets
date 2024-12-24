@@ -933,6 +933,24 @@ snippet Myhtml5
 	</html>
 snippet eruda
 	<script src="https://cdn.jsdelivr.net/npm/eruda" onload="eruda.init()"></script>
+snippet erudaTouche
+		<script src="https://cdn.jsdelivr.net/npm/eruda"></script> 
+		<script src="https://cdn.jsdelivr.net/npm/eruda-touches"></script>   
+		
+		<script>
+			eruda.init();
+			eruda.add(erudaTouches);
+		</script>
+snippet erudaTouches
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+	<script src="https://cdn.jsdelivr.net/npm/eruda-touches"></script>   
+	<script src="https://cdn.jsdelivr.net/npm/eruda-vue"></script>
+	<script>
+	  eruda.init();
+	  eruda.add(erudaVue);
+	  eruda.add(erudaTouches);
+	</script>
 snippet relDigi
 	<div class="conteudo">
 	  <div class="relogio">
