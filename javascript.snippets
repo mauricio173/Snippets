@@ -14,6 +14,15 @@ snippet f
 	function${M1?: ${1:functionName}}($2) {
 		${0}
 	}${M2?;}${M3?,}${M4?)}
+snippet funcao
+	function${M1?: ${1:functionName}}($2) {
+		${0}
+	}${M2?;}${M3?,}${M4?)}
+	${3:$1}();
+snippet Funcao
+	function${M1?: ${1:functionName}}($2) {
+		${0}
+	}${M2?;}${M3?,}${M4?)}
 # Immediate function
 trigger \(?f\(
 endTrigger \)?
@@ -77,24 +86,30 @@ regex /([,{[])|^\s*/:f/
 # Timer functions
 snippet setTimeout
 regex /\b/st|timeout|setTimeo?u?t?/
-	setTimeout(function() {${2}}, ${1:10});
+	setTimeout(function() {${2}}, ${1:1000});
 snippet setInterval
-	setInterval(function() {${2}}, ${1:10});
+	setInterval(function() {${2}}, ${1:1000});
 # Get Elements
 snippet gett
-	getElementsBy${1:TagName}('${2}')${3}
+	getElementsByTagName('${2:TagName}');${3}
 snippet query
-	querySelector("${1}")
+	querySelector("${1}");
 # Get Element
 snippet get
-	getElementBy${1:Id}('${2}')${3}
+	getElementById('${1:id}');${3}
 snippet queryAll
-	querySelectorAll("${1}")
+	querySelectorAll("${1}");
 # eventlistener
 snippet addeventlistener
-	addEventListener("${1:click}", ${2})
+	addEventListener("${1:click}", ${2} () => {
+		
+	});
 # console.log (Firebug)
 snippet cl
+	console.log(${1:Var});
+snippet alert
+	alert(${1:Var});
+snippet Con
 	console.log(${1});
 # return
 snippet ret
@@ -208,6 +223,25 @@ snippet prom
 	new Promise((resolve, reject) => {
 		$1
 	});
+snippet obterDataHojeFutura
+	// Obtenha a data 
+	const hoje = new Date();
+	const dataAtual = hoje.getFullYear() + "-" + (hoje.getMonth() + 1) + "-" + (hoje.getDate() < 10 ? "0" + hoje.getDate() : hoje.getDate());
+	
+	// Criar uma nova data baseada na atual
+	const dataFutura = new Date(hoje);
+	dataFutura.setMonth(dataFutura.getMonth() + 6);
+	
+	// Formatar as datas no formato "YYYY-MM-DD"
+	const formatarData = data => {
+	const ano = data.getFullYear();
+	const mes = String(data.getMonth() + 1).padStart(2, "0"); // Adiciona 1 ao mÃªs porque o Ã­ndice começa em 0
+	const dia = String(data.getDate()).padStart(2, "0");
+	return `${1:${2:ano}}-${3:${4:mes}}-${5:${6:dia}}`;
+	};
+	
+	dataInicio.value = dataAtual;
+	dataFinal.value = formatarData(dataFutura);
 snippet obterData
 	// Obtenha a data 
 	function obterData() {
@@ -224,69 +258,77 @@ snippet obterData
 	  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
 	  // const dataHoraFormatada = `--T:`;
 	  const dataHoraFormatada = `${1:dia}/${2:mes}/${3:ano} - ${4:horas}:${5:minutos}:${6:segundos}:${7:milisegundos}`;
+	  const data = `${11:${}${2:ano}}-${12:${}${3:mes}}-${13:${}${4:dia}}`;
+		const horario = `${21:${}${5:horas}}:${22:${}${6:minutos}}:${23:${}${7:segundos}}:${24:${}${8:milisegundos}}`;
 		// console.log(milisegundos);
 	  // console.log(dataHoraFormatada);
 	  return dataHoraFormatada;
 	}
+snippet dataHorario
+	function dataHorario() {
+		const dataHoraAtual = new Date();
+		const ano = dataHoraAtual.getFullYear();
+		const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, "0");
+		const dia = String(dataHoraAtual.getDate()).padStart(2, "0");
+		const horas = String(dataHoraAtual.getHours()).padStart(2, "0");
+		const minutos = String(dataHoraAtual.getMinutes()).padStart(2, "0");
+		const segundos = String(dataHoraAtual.getSeconds()).padStart(2, "0");
+		const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, "0");
+		const data = `${11:${}${2:ano}}-${12:${}${3:mes}}-${13:${}${4:dia}}`;
+		const horario = `${21:${}${5:horas}}:${22:${}${6:minutos}}:${23:${}${7:segundos}}:${24:${}${8:milisegundos}}`;
+		return {
+		data: data,
+		horario: horario
+		};
+	}
+	const dataData = dataHorario.data;
+	const dataHora = dataHorario.horario;
+	let fim = "2024-05-12";
+	let inicio = "2024-05-11";
+	function difDias(fim, inicio) {
+	let fimItem = fim;
+	let inicioItem = inicio;
+	const DiffInMs = new Date(fimItem) - new Date(inicioItem);
+	const DiffInDays = DiffInMs / (1000 * 60 * 60 * 24);
+	console.log(DiffInDays);
+	}
+	difDias(fim, inicio);
 snippet obterDataReg
 	// Obtenha a data 
 	function obterDataReg() {
-  // Obter a data e hora atual do dispositivo
-  const dataHoraAtual = new Date();
-  
-  // Formatar a data e hora para o formato correto
-  const ano = dataHoraAtual.getFullYear();
-  const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
-  const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
-  const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
-  const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
-  const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
-  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
-  const dataHoraFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}:${milisegundos}`;
-  const dataReg = `${1:ano}-${2:mes}-${3:dia}`;
-  return dataReg;
-	}
+	  // Obter a data e hora atual do dispositivo
+	  const dataHoraAtual = new Date();
+	  
+	  // Formatar a data e hora para o formato correto
+	  const ano = dataHoraAtual.getFullYear();
+	  const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
+	  const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
+	  const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
+	  const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
+	  const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
+	  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
+	  const dataHoraFormatada = `${11:${21:dia}}/${12:${22:mes}}/${13:${23:ano}} - ${14:${24:horas}}:${15:${25:minutos}}:${16:${26:segundos}}:${17:${27:milisegundos}}`;
+	  const dataReg = `${1:${}${13:ano}}-${2:${}${12:mes}}-${3:${}${11:dia}}`;
+	  return dataReg;
+		}
 snippet obterHoraReg
 	// Obtenha a hora
 	function obterHora() {
-  // Obter a hora atual do dispositivo
-  const dataHoraAtual = new Date();
-  
-  // Formatar a data e hora para o formato correto
-  const ano = dataHoraAtual.getFullYear();
-  const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
-  const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
-  const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
-  const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
-  const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
-  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
-  const dataHoraFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}:${milisegundos}`;
-  const horaReg = `${1:horas}:${2:minutos}:${3:segundos}:${4:milisegundos}`;
-  return horaReg;
- }
-snippet criarLocalStorage
-	//const getPagamento = JSON.parse(localStorage.getItem("pagamentos"));
-	//let pagamentos = getPagamento !== null ? getPagamento : [];
-	const getObjEl = JSON.parse(localStorage.getItem("$2"));
-	let ${2:nomeArray} = getObjEl !== null ? getObjEl : [];
-snippet salvarLocalStorage
-	localStorage.setItem("${2:nomeArray}", JSON.stringify($2));
-snippet prevDefault
-	event.preventDefault();
-snippet querySelectorClass
-	const ${1:classSelector} = document.querySelector(".${2:$1}");
-snippet querySelectorId
-	const ${1:idSelector} = document.querySelector("#${2:$1}");
-snippet gerarID
-	const gerarID = () => Math.round(Math.random() * 1000000);
-snippet consoleLog
-	console.log(${1:alerta});
-snippet eruda
-	<script
-      src="https://cdn.jsdelivr.net/npm/eruda"
-      onload="eruda.init()" 
-  ></script>
-
+	  // Obter a hora atual do dispositivo
+	  const dataHoraAtual = new Date();
+	  
+	  // Formatar a data e hora para o formato correto
+	  const ano = dataHoraAtual.getFullYear();
+	  const mes = String(dataHoraAtual.getMonth() + 1).padStart(2, '0');
+	  const dia = String(dataHoraAtual.getDate()).padStart(2, '0');
+	  const horas = String(dataHoraAtual.getHours()).padStart(2, '0');
+	  const minutos = String(dataHoraAtual.getMinutes()).padStart(2, '0');
+	  const segundos = String(dataHoraAtual.getSeconds()).padStart(2, '0');
+	  const milisegundos = String(dataHoraAtual.getMilliseconds()).padStart(2, '0');
+	  const dataHoraFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}:${milisegundos}`;
+	  const horaReg = `${1:horas}:${2:minutos}:${3:segundos}:${4:milisegundos}`;
+	  return horaReg;
+	 }
 snippet criarMostrarCategorias
 	function addCategoria() {
 	  var newCategoryAdd = document.querySelector(".popInput").value.trim();
@@ -351,7 +393,15 @@ snippet criarMostrarCategorias
 				    Nova
 				  </button>
 					</div>
-					
+snippet criarLocalStorage
+	const $2Get = JSON.parse(localStorage.getItem("$2"));
+	let ${2:nomeArray} = $2Get !== null ? $2Get : [];
+snippet salvarLocalStorage
+	localStorage.setItem("${2:nomeArray}", JSON.stringify($2));
+snippet prevDefault
+	event.preventDefault();
+snippet Classe
+	const ${1:classSelector} = document.querySelector(".${2:$1}");
 snippet Id
 	const ${1:idSelector} = document.querySelector("#${2:$1}");
 snippet IdStyle
@@ -435,11 +485,11 @@ snippet tamFilhosFechar
 		}
 	} 
 snippet innerHTML
-	innerHTML = `
-
-	`;
+	innerHTML = ``;
 snippet click
 	click();
+snippet setAttribute
+	setAttribute("${1:name}", "${2:$1}");
 snippet toFixed
 	.toFixed(2)
 snippet DOMContentLoaded
@@ -457,3 +507,13 @@ snippet eventChange
 snippet styleBody
   const body = document.body;
   const styleBody = body.currentStyle || window.getComputedStyle(body);
+trigger \(?click\(
+endTrigger \)?
+snippet semana
+  function fun() {
+	  console.log(dats.value);
+	  moment.locale("pt-BR");
+	  t = moment(`${dats.value}`);
+	  console.log(`${t.week()} de ${t.weekYear()}`); 
+	  console.log(`${t.isoWeek()} de ${t.isoWeekYear()}`);
+  }
