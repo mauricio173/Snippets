@@ -1099,31 +1099,38 @@ snippet cont:end
 	align-content: flex-end;
 	
 snippet padrao
-	html {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		--dark: #181818dd;
-		--white: #fdfdfd;
-		--red: #f9004d;
-		--roxo: #986dff;
-		--verde: #a6fc98;
+	* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	  --dark: #181818dd;
+	  --white: #fdfdfd;
+	  --red: #f9004d;
+	  --roxo: #986dff;
+	  --verde: #a6fc98;
 	}
-	
 	body {
-	
+	  display: flex;
+	  flex-wrap: wrap;
+	  flex: 1;
+	  margin: 3px;
 	}
-	
-	.header {
-	
+	header,
+	main,
+	aside,
+	footer {
+	  display: flex;
+	  flex-wrap: wrap;
+	  flex: 1;
+	  background: #828282;
 	}
-	
-	.main {
-	
+	/* Mobile */
+	@media screen and (max-width: 800px) {
+	  
 	}
-	
-	.footer {
-	
+	/* Device */
+	@media screen and (min-width: 800px) {
+	  
 	}
 	
 snippet padmar
