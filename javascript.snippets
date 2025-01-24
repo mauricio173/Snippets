@@ -507,6 +507,37 @@ snippet eventChange
 snippet styleBody
   const body = document.body;
   const styleBody = body.currentStyle || window.getComputedStyle(body);
+snippet desmarcarRadioCheckbox
+   // itera com método do Array para compatibilidade
+	Array.prototype.forEach.call(document.querySelectorAll('#labelCheck input[type=checkbox], #labelCheck input[type=radio]'), function(radio) {
+	  radio.addEventListener('click', function() {
+	    var self = this;
+	    // obter elementos com o mesmo nome exceto o próprio e grava estado desmarcado
+	    Array.prototype.filter.call(document.getElementsByName(this.name), function(filterEl) {
+	      return self !== filterEl;
+	    }).forEach(function(otherEl) {
+	      delete otherEl.dataset.check;
+	    });
+	
+	    // grava estado baseado no estado anterior
+	    if (this.dataset.hasOwnProperty('check')) {
+	      this.checked = false;
+	      delete this.dataset.check;
+	    } else {
+	      this.dataset.check = '';
+	    }
+	  }, false);
+	});
+snippet marcarUmRadioCheckbox
+	function marcaDesmarca(caller) {
+	  var checks = document.querySelectorAll('#labelCheck input[type="checkbox"]'); 
+	  // checks.forEach(c => c.checked = (c == caller) );
+	  
+	  checks.forEach((c, i) => {
+	  	c.checked = (c == caller);
+	
+	  });
+	}
 trigger \(?click\(
 endTrigger \)?
 snippet semanas
